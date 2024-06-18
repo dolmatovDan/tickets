@@ -33,3 +33,11 @@ document.getElementById("limits").innerHTML = "Действует до 01:00 " +
 ticket_number = "3" + String(Math.trunc(Math.random() * (1000000000000 - 100000000000 + 1)) + 100000000000)
 console.log(ticket_number)
 document.getElementById('ticket-number').innerHTML = "Билет № " + ticket_number
+
+barcode_button = document.getElementById('barcode-button')
+barcode_button.addEventListener("click", () => {
+    barcode_button.classList.add("clicked");
+    setTimeout(() => {
+        barcode_button.classList.remove("clicked");
+    }, 500);
+});
