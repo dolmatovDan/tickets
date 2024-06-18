@@ -20,15 +20,16 @@ if (train_type == "Электричка") {
     document.getElementById('train_image').src = "assets/img/train2.png";
 }
 
-const today = new Date(year, month, day)
+const today = new Date(year, month - 1, day)
 
 const tomorrow = new Date(today)
 tomorrow.setDate(tomorrow.getDate() + 1)
+console.log(today, tomorrow)
 
 next_day = tomorrow.getDate()
 next_month = tomorrow.getMonth()
 
-document.getElementById("limits").innerHTML = "Действует до 01:00 " + String(next_day) + " " + months[next_month - 1]
+document.getElementById("limits").innerHTML = "Действует до 01:00 " + String(next_day) + " " + months[next_month]
 
 ticket_number = "3" + String(Math.trunc(Math.random() * (1000000000000 - 100000000000 + 1)) + 100000000000)
 console.log(ticket_number)
