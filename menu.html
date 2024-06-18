@@ -10,23 +10,26 @@
     <div class="content">
         <div class="inputs">
             <div class="input-filed">
-                <input class="input" type="text" id="input-field" placeholder="Москва">
+                <input class="input" type="text" id="start" placeholder="Откуда (напр.: Москва)">
             </div>
             <div class="input-filed">
-                <input class="input" type="text" id="input-field" placeholder="Петушки🤡">
+                <input class="input" type="text" id="end" placeholder="Куда (напр.: Петушки🤡)">
             </div>
             <div class="input-filed">
-                <input class="input" type="text" id="input-field" placeholder="32🤡">
+                <input class="input" type="text" id="day" placeholder="Число (напр.: 32🤡)">
             </div>
             <div class="input-filed">
-                <input class="input" type="text" id="input-field" placeholder="июня">
+                <input class="input" type="text" id="month" placeholder="Месяц (напр.: 8)">
             </div>
             <div class="input-filed">
-                <input class="input" type="text" id="input-field" placeholder="Цена (напр. 10)">
+                <input class="input" type="text" id="year" placeholder="Год (напр.: 2024)">
+            </div>
+            <div class="input-filed">
+                <input class="input" type="text" id="price" placeholder="Цена (напр.: 10)">
             </div>
             <div class="input-filed">
                 <div class="select">
-                    <select class="standard-select">
+                    <select class="standard-select" id="train_type">
                         <option value="Option 1">Электричка</option>
                         <option value="Option 2">Ласточка</option>
                     </select>
@@ -34,10 +37,11 @@
             </div>
         </div>
     
-        <a class="button-link" href="/index.html">
+        <a class="button-link" href="/index.html" id="data-button">
             Сгенерить билет
         </a>
     </div>
     
+    <script src="/assets/scripts/script_menu.js"></script>
 </body>
 </html>
