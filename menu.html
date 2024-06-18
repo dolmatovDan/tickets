@@ -1,47 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/styles/menu/style.css">
+    <title>Train Ticket</title>
+    <link rel="stylesheet" href="assets/styles/main/style.css">
 </head>
 <body>
-    <div class="content">
-        <div class="inputs">
-            <div class="input-filed">
-                <input class="input" type="text" id="start" placeholder="Откуда (напр.: Москва)">
-            </div>
-            <div class="input-filed">
-                <input class="input" type="text" id="end" placeholder="Куда (напр.: Петушки🤡)">
-            </div>
-            <div class="input-filed">
-                <input class="input" type="text" id="day" placeholder="Число (напр.: 32🤡)">
-            </div>
-            <div class="input-filed">
-                <input class="input" type="text" id="month" placeholder="Месяц (напр.: 8)">
-            </div>
-            <div class="input-filed">
-                <input class="input" type="text" id="year" placeholder="Год (напр.: 2024)">
-            </div>
-            <div class="input-filed">
-                <input class="input" type="text" id="price" placeholder="Цена (напр.: 10)">
-            </div>
-            <div class="input-filed">
-                <div class="select">
-                    <select class="standard-select" id="train_type">
-                        <option value="Option 1">Электричка</option>
-                        <option value="Option 2">Ласточка</option>
-                    </select>
+    <div class="ticket">
+        <div class="header">
+            <a href="/menu.html" class="back-arrow">🡠</a>
+            <span>Билет</span>
+        </div>
+        <div class="content">
+            <div class="info">
+                <div class="route">
+                    <div class="station">
+                        <span id="path">Санкт-Петербург (Балтийский вокзал) — Ручьи</span>
+                        <img src="assets/img/train1.png" id="train_image" alt="">
+                    </div>
+                    <span class="date" id="date">12 июня</span>
+                    <span class="validity" id="limits">Действует до 01:00 13 июня</span>
+                </div>
+                <div class="barcode">
+                    <div class="front">
+                        <img src="assets/img/barcode.png" alt="Barcode">
+                    </div>
+                </div>
+                <div class="details">
+                    <span class="type">Полный, в одну сторону</span>
+                    <span class="description" id="ticket_type">Билет на электричку стандарт (обычный пригородный поезд)</span>
                 </div>
             </div>
+            
+            <div class="footer">
+                <span class="price" id="price">45 ₽</span>
+                <span class="ticket-number">Билет № 3682152284371</span>
+            </div>
         </div>
-    
-        <a class="button-link" href="/index.html" id="data-button">
-            Сгенерить билет
-        </a>
     </div>
-    
-    <script src="/assets/scripts/script_menu.js"></script>
+    <script type="text/javascript" src="/assets/scripts/script_index.js"></script>
 </body>
 </html>
