@@ -1,31 +1,25 @@
-start = sessionStorage.getItem('start');
-end = sessionStorage.getItem('end');
-day = sessionStorage.getItem('day')
-year = sessionStorage.getItem('year')
-month = sessionStorage.getItem('month')
-price = sessionStorage.getItem('price')
-train_type = sessionStorage.getItem('train_type')
+const element = document.getElementById('data-button');
+element.addEventListener("click", function() {
+    start = document.getElementById('start').value
+    sessionStorage.setItem('start', start)
 
-months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
+    end = document.getElementById('end').value
+    sessionStorage.setItem('end', end)
 
-document.getElementById('path').innerHTML = start + " — " + end
-document.getElementById('date').innerHTML = day + " " + months[month - 1];
-document.getElementById('price').innerHTML = price + " ₽";
+    day = document.getElementById('day').value
+    sessionStorage.setItem('day', day)
 
-if (train_type == "Электричка") {
-    document.getElementById('ticket_type').innerHTML = "Билет на электричку стандарт (обычный пригородный поезд)";
-    document.getElementById('train_image').src = "assets/img/train1.png";
-} else {
-    document.getElementById('ticket_type').innerHTML = "Билет на электричку «Ласточка»";
-    document.getElementById('train_image').src = "assets/img/train2.png";
-}
+    month = document.getElementById('month').value
+    sessionStorage.setItem('month', month)
 
-const today = new Date(year, month, day)
+    year = document.getElementById('year').value
+    sessionStorage.setItem('year', year)
 
-const tomorrow = new Date(today)
-tomorrow.setDate(tomorrow.getDate() + 1)
+    price = document.getElementById('price').value
+    sessionStorage.setItem('price', price)
 
-next_day = tomorrow.getDate()
-next_month = tomorrow.getMonth()
+    option = document.getElementById('train_type')
+    train_type = option.options[option.selectedIndex].text
 
-document.getElementById("limits").innerHTML = "Действует до 01:00 " + String(next_day) + " " + months[next_month - 1]
+    sessionStorage.setItem('train_type', train_type)
+});

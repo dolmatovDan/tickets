@@ -1,25 +1,35 @@
-const element = document.getElementById('data-button');
-element.addEventListener("click", function() {
-    start = document.getElementById('start').value
-    sessionStorage.setItem('start', start)
+start = sessionStorage.getItem('start');
+end = sessionStorage.getItem('end');
+day = sessionStorage.getItem('day')
+year = sessionStorage.getItem('year')
+month = sessionStorage.getItem('month')
+price = sessionStorage.getItem('price')
+train_type = sessionStorage.getItem('train_type')
 
-    end = document.getElementById('end').value
-    sessionStorage.setItem('end', end)
+months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
 
-    day = document.getElementById('day').value
-    sessionStorage.setItem('day', day)
+document.getElementById('path').innerHTML = start + " — " + end
+document.getElementById('date').innerHTML = day + " " + months[month - 1];
+document.getElementById('price').innerHTML = price + " ₽";
 
-    month = document.getElementById('month').value
-    sessionStorage.setItem('month', month)
+if (train_type == "Электричка") {
+    document.getElementById('ticket_type').innerHTML = "Билет на электричку стандарт (обычный пригородный поезд)";
+    document.getElementById('train_image').src = "assets/img/train1.png";
+} else {
+    document.getElementById('ticket_type').innerHTML = "Билет на электричку «Ласточка»";
+    document.getElementById('train_image').src = "assets/img/train2.png";
+}
 
-    year = document.getElementById('year').value
-    sessionStorage.setItem('year', year)
+const today = new Date(year, month, day)
 
-    price = document.getElementById('price').value
-    sessionStorage.setItem('price', price)
+const tomorrow = new Date(today)
+tomorrow.setDate(tomorrow.getDate() + 1)
 
-    option = document.getElementById('train_type')
-    train_type = option.options[option.selectedIndex].text
+next_day = tomorrow.getDate()
+next_month = tomorrow.getMonth()
 
-    sessionStorage.setItem('train_type', train_type)
-});
+document.getElementById("limits").innerHTML = "Действует до 01:00 " + String(next_day) + " " + months[next_month - 1]
+
+ticket_number = "3" + String(Math.trunc(Math.random() * (1000000000000 - 100000000000 + 1)) + 100000000000)
+console.log(ticket_number)
+document.getElementById('ticket-number').innerHTML = "Билет № " + ticket_number
