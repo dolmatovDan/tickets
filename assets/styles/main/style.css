@@ -1,5 +1,10 @@
+@font-face {
+    font-family: Corbel;
+    src: url('/assets/fonts/Corbel.ttf');
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Corbel, Arial, sans-serif;
     background-color: #f5f5f5;
     display: flex;
     height: 100vh;
