@@ -27,13 +27,13 @@ function initTrainData(start, end, day, month, train_type) {
 }
 
 function main() {
-    start = sessionStorage.getItem('start');
-    end = sessionStorage.getItem('end');
-    day = sessionStorage.getItem('day')
-    year = sessionStorage.getItem('year')
-    month = sessionStorage.getItem('month')
-    price = sessionStorage.getItem('price')
-    train_type = sessionStorage.getItem('train_type')
+    start = localStorage.getItem('start');
+    end = localStorage.getItem('end');
+    day = localStorage.getItem('day')
+    year = localStorage.getItem('year')
+    month = localStorage.getItem('month')
+    price = localStorage.getItem('price')
+    train_type = localStorage.getItem('train_type')
     
     initTrainData(start, end, day, month, train_type);
     initDate(year, month, day)
