@@ -1,9 +1,12 @@
-function init() {
+function initValues() {
     document.getElementById('start').value = localStorage.getItem('start');
     document.getElementById('end').value = localStorage.getItem('end');
-    document.getElementById('day').value = localStorage.getItem('day');
-    document.getElementById('month').value = localStorage.getItem('month');
-    document.getElementById('year').value = localStorage.getItem('year');
+
+    today = new Date();
+    document.getElementById('day').value = today.getDate();
+    document.getElementById('month').value = today.getMonth() + 1;
+    document.getElementById('year').value = today.getFullYear();
+
     document.getElementById('price').value = localStorage.getItem('price');
 
     if (localStorage.getItem('train_type') == "Ласточка") {
@@ -14,7 +17,7 @@ function init() {
 }
 
 function main() {
-    init();
+    initValues();
 
     const element = document.getElementById('data-button');
     
