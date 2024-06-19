@@ -9,7 +9,7 @@ function init() {
     if (localStorage.getItem('train_type') == "Ласточка") {
         document.getElementById('train_type').value = "Option 2";    
     } else {
-        document.getElementById('train_type').value = "Option 2";
+        document.getElementById('train_type').value = "Option 1";
     }
 }
 

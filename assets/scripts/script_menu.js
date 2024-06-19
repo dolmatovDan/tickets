@@ -37,7 +37,7 @@ function main() {
     
     initTrainData(start, end, day, month, train_type);
     initDate(year, month, day)
-    
+
     barcode_button = document.getElementById('barcode-button')
     barcode_button.addEventListener("click", () => {
         barcode_button.classList.add("clicked");
