@@ -1,3 +1,42 @@
+let stations = ["Санкт-Петербург (Балтийский вокзал)", "Кавголово", "Девяткино", "Броневая"];
+let sortedStations = stations.sort();
+let input = document.getElementById("start");
+input.addEventListener("keyup", (e) => {
+    removeElements();
+    let counter = 0;
+    for (let station of sortedStations) {
+        if (station.toLocaleLowerCase().startsWith(input.value.toLowerCase())
+        && input.value != "") {
+            let listItem = document.createElement("li");
+            listItem.classList.add("list-items");
+            listItem.style.cursor = "pointer";
+            listItem.setAttribute("onclick", "displayNames('" + station + "')");
+
+            let word = "<b>" + station.substr(0, input.value.length) + "</b>";
+            word += station.substr(input.value.length);
+            
+            listItem.innerHTML = word;
+            document.querySelector(".list").appendChild(listItem);
+            counter += 1;
+        }
+        if (counter >= 5) {
+            break;
+        }
+    }
+});
+
+function displayNames(value) {
+    input.value = value;
+    removeElements();
+}
+
+function removeElements() {
+    let items = document.querySelectorAll(".list-items");
+    items.forEach((item) => {
+        item.remove();
+    });
+}
+
 function initValues() {
     document.getElementById('start').value = localStorage.getItem('start');
     document.getElementById('end').value = localStorage.getItem('end');
