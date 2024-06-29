@@ -56,7 +56,7 @@ function main() {
         barcode_button.classList.add("clicked");
         setTimeout(() => {
             barcode_button.classList.remove("clicked");
-        }, 600);
+        }, 550);
     });
 }
 
