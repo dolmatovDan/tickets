@@ -1,33 +1,81 @@
-let stations = ["Санкт-Петербург (Балтийский вокзал)", "Кавголово", "Девяткино", "Броневая"];
-let sortedStations = stations.sort();
-let input = document.getElementById("start");
-input.addEventListener("keyup", (e) => {
-    removeElements();
-    let counter = 0;
-    for (let station of sortedStations) {
-        if (station.toLocaleLowerCase().startsWith(input.value.toLowerCase())
-        && input.value != "") {
-            let listItem = document.createElement("li");
-            listItem.classList.add("list-items");
-            listItem.style.cursor = "pointer";
-            listItem.setAttribute("onclick", "displayNames('" + station + "')");
-
-            let word = "<b>" + station.substr(0, input.value.length) + "</b>";
-            word += station.substr(input.value.length);
-            
-            listItem.innerHTML = word;
-            document.querySelector(".list").appendChild(listItem);
-            counter += 1;
-        }
-        if (counter >= 5) {
-            break;
-        }
+async function getStations() {
+    const response = await fetch("/assets/data/stations.txt");
+    const data = await response.text();
+    const stations = [];
+    const arr = data.split('\n');
+    for (let s in arr) {
+      const city = arr[s].split(":::")[0].trim();
+      stations.push(city);
     }
-});
+    return stations;
+}
 
-function displayNames(value) {
-    input.value = value;
+let start_input = document.getElementById("start");
+function displayStartNames(value) {
+    start_input.value = value;
     removeElements();
+}
+
+async function setAutoStartCompletes() {
+    let stations = await getStations();
+    let sortedStations = stations.sort();
+    start_input.addEventListener("keyup", (e) => {
+        removeElements();
+        let counter = 0;
+        for (let station of sortedStations) {
+            if (station.toLocaleLowerCase().startsWith(start_input.value.toLowerCase())
+            && start_input.value.length > 2) {
+                let listItem = document.createElement("li");
+                listItem.classList.add("list-items");
+                listItem.style.cursor = "pointer";
+                listItem.setAttribute("onclick", "displayStartNames('" + station + "')");
+
+                let word = "<b>" + station.substr(0, start_input.value.length) + "</b>";
+                word += station.substr(start_input.value.length);
+                
+                listItem.innerHTML = word;
+                document.querySelector("#start_list").appendChild(listItem);
+                counter += 1;
+            }
+            if (counter >= 7) {
+                break;
+            }
+        }
+    });
+}
+
+let end_input = document.getElementById("end");
+function displayEndNames(value) {
+    end_input.value = value;
+    removeElements();
+}
+
+async function setAutoEndCompletes() {
+    let stations = await getStations();
+    let sortedStations = stations.sort();
+    end_input.addEventListener("keyup", (e) => {
+        removeElements();
+        let counter = 0;
+        for (let station of sortedStations) {
+            if (station.toLocaleLowerCase().startsWith(end_input.value.toLowerCase())
+            && end_input.value.length > 2) {
+                let listItem = document.createElement("li");
+                listItem.classList.add("list-items");
+                listItem.style.cursor = "pointer";
+                listItem.setAttribute("onclick", "displayEndNames('" + station + "')");
+
+                let word = "<b>" + station.substr(0, end_input.value.length) + "</b>";
+                word += station.substr(end_input.value.length);
+                
+                listItem.innerHTML = word;
+                document.querySelector("#end_list").appendChild(listItem);
+                counter += 1;
+            }
+            if (counter >= 7) {
+                break;
+            }
+        }
+    });
 }
 
 function removeElements() {
@@ -56,6 +104,8 @@ function initValues() {
 }
 
 function main() {
+    setAutoStartCompletes();
+    setAutoEndCompletes();
     initValues();
 
     const element = document.getElementById('data-button');
