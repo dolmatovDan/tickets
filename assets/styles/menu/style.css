@@ -119,7 +119,7 @@ body {
 	cursor: pointer;
 	outline: inherit;
     transform: rotateY(0deg);
-    transition: transform 1s linear;
+    transition: transform 1.2s linear;
 }
 
 .barcode .front.clicked {
